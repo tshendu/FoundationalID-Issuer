@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head2.ejs") %>
+  <body>
+    <main class="main">
+      <%- include("./partials/sideNav.ejs") %>
+      <section class="content">
+        <div class="container">
+          <div class="container-wrapper">
+            <div>
+              <div class="image-wrapper">
+                <img
+                  src="/images/dcrc-logo.png"
+                  class="center-block"
+                  alt="Logo"
+                  width="100px"
+                  height="100px"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="page-container">
+            <form action="/webhook_update" class="" method="GET">
+              <div class="form-content">
+                <div>
+                  <label for="webhookurl" class="form-label"
+                    ><strong style="font-size: 130%">Webhook URL</strong></label
+                  >
+                  <input
+                    type="text"
+                    name="webhookurl"
+                    required
+                    class="form-control"
+                    id="webhook-url"
+                    placeholder="Webhook URL"
+                  />
+                </div>
+                <button
+                  id="configure"
+                  type="submit"
+                  class="btn btn-outline-primary"
+                >
+                  Configure
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

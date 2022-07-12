@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head2.ejs") %>
+  <body>
+    <main class="main">
+      <%- include("./partials/sideNav.ejs") %>
+      <section class="content">
+        <div class="container">
+          <div class="row">
+            <div class="col-3">
+              <img
+                src="/images/dcrc-logo.png"
+                class="center-block"
+                alt="Logo"
+                width="100px"
+                height="100px"
+              />
+            </div>
+            <div class="col-3"></div>
+          </div>
+          <!-- <div class="page-container scroll overflow-hidden"> -->
+          <div class="row scroll overflow-hidden">
+            <form action="/issue_credential" method="GET">
+              <h2 style="margin-top: 0%; margin-bottom: 0%">
+                <strong style="font-size: 130%">Issue Credentials</strong>
+              </h2>
+              <input
+                type="text"
+                name="creddefid"
+                class="Tele"
+                value="<%= creddefid %>"
+                placeholder="Cred-Def-ID"
+              />
+              <input
+                type="text"
+                name="cid"
+                class="cid"
+                placeholder="CID"
+              />
+              <button type="button" class="cidSearch" value="Search" name="search">Search</button>
+              <input
+                type="text"
+                name="relationshipdid"
+                class="Tele"
+                placeholder="Relationship DID"
+              />
+              <!-- <input type="text" name="cid" class="cid" placeholder="CID" /> -->
+              <input
+                type="text"
+                name="first_name"
+                class="first_name"
+                value="<%= firstname %>"
+                placeholder="First Name"
+              />
+              <!-- <input
+                type="text"
+                name="middle_name"
+                class="Tele"
+                placeholder="Middle Name"
+              /> -->
+              <input
+                type="text"
+                name="last_name"
+                class="last_name"
+                placeholder="Last Name"
+              />
+              <input
+                type="text"
+                name="gender"
+                class="gender"
+                placeholder="Gender"
+              />
+              <input
+                type="text"
+                onfocus="(this.type='date')"
+                name="dob"
+                class="dob"
+                placeholder="Date of Birth"
+              />
+              <input
+                type="text"
+                name="household_number"
+                class="household_number"
+                placeholder="Household Number"
+              />
+              <!-- <input -->
+              <!-- type="text" -->
+              <!-- name="blood_group" -->
+              <!-- class="Address" -->
+              <!-- placeholder="Blood Group" -->
+              <!-- /> -->
+              <!-- <input -->
+              <!-- type="text" -->
+              <!-- name="house_number" -->
+              <!-- class="Address" -->
+              <!-- placeholder="House Number (PD)" -->
+              <!-- /> -->
+              <!-- <input -->
+              <!-- type="text" -->
+              <!-- name="land_record_number" -->
+              <!-- class="Address" -->
+              <!-- placeholder="Land Record Number (PD)" -->
+              <!-- /> -->
+              <!-- <input -->
+              <!-- type="text" -->
+              <!-- name="village" -->
+              <!-- class="Address" -->
+              <!-- placeholder="Village (PD)" -->
+              <!-- /> -->
+              <!-- <input -->
+              <!-- type="text" -->
+              <!-- name="block_number" -->
+              <!-- class="Address" -->
+              <!-- placeholder="Block Number (PD)" -->
+              <!-- /> -->
+              <!-- <input -->
+              <!-- type="text" -->
+              <!-- name="sub_district" -->
+              <!-- class="Address" -->
+              <!-- placeholder="SubDistrict (PD)" -->
+              <!-- /> -->
+              <!-- <input -->
+              <!-- type="text" -->
+              <!-- name="district" -->
+              <!-- class="Address" -->
+              <!-- placeholder="District (PD)" -->
+              <!-- /> -->
+              <button type="submit" value="Add" name="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+      $(window).scroll(function () {
+        var scroll = $(window).scrollTop(),
+          dh = $(document).height(),
+          wd = $(window).height();
+        scrollPercent = (scroll / (dh - wh)) * 100;
+        $("#progressbar").css("height", scrollPercent + "%");
+      });
+
+      $('.cidSearch').on('click', function(){
+        var cid = $('.cid').val();
+       
+        $.ajax({
+          url: "/cid-request",
+          type: 'GET',
+          data:{
+            cid: cid
+          },
+        
+       success: function (data) {
+        // $('.first_name').val(data);
+        $(".first_name").val(data.firstname)
+        $(".last_name").val(data.lastName)
+        $(".gender").val(data.gender)
+        $(".dob").val(data.dob)
+        $(".household_number").val(data.household_number)
+          console.log(data+"fddffdfd");
+
+       }
+          });
+        
+        });
+      
+    </script>
+  </body>
+</html>

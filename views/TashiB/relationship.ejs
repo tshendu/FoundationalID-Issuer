@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head2.ejs") %>
+  <body>
+    <main class="main">
+      <%- include("./partials/sideNav.ejs") %>
+      <section class="content">
+        <div class="container">
+          <div class="container-wrapper">
+            <div>
+                <div class="image-wrapper">
+                  <img
+                    src="/images/dcrc-logo.png"
+                    class="center-block"
+                    alt="Logo"
+                    width="100px"
+                    height="100px"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="page-container"><form action="/create_relationdid"
+              method="GET"
+              autocomplete="off" class="arrange">
+                <div class="form-content">
+                  <div>
+                    <label for="institution-name" class="form-label"
+                      ><strong style="font-size: 130%;">DomainDID</strong></label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="domain-did"
+                      placeholder="domain-did"
+                      disabled
+                      value="<%= domaindid%> "
+                    />
+                  </div>
+                  <button
+                    id="configure"
+                    type="submit"
+                    class="btn btn-outline-primary"
+                  >
+                    Configure
+                  </button>
+                </div>
+              </form></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
